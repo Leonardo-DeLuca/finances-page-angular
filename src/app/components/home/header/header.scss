@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+    height: auto;
+    padding: 1.2rem 2rem 0.5rem 0rem;
+    justify-content: space-between;
+    margin-inline: 2.5rem;
+}
+
+hr{
+    border: 1px solid var(--mat-sys-outline-variant);
+}
+
+.header_logo{
+    height: 5vh;
+}
+
+.header_login-button{
+    align-content: center;
+}

@@ -1,0 +1,100 @@
+@use '@angular/material' as mat;
+
+.login-page {
+    height: 100%;
+    background-image: url(../../../../public/bg_login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+}
+
+.login-page_card {
+    height: 90vh;
+    width: 85vw;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    background-color: var(--mat-sys-surface);
+}
+
+.login-page_card_form {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6em;
+}
+
+.home-btn{
+    position: absolute;
+    left: 1em;
+    top: 1em;
+}
+
+.login-page_card_form mat-form-field {
+    width: 20vw;
+    display: flex;
+}
+
+.login-page_card_img-container {
+    width: 50%;
+    position: relative;
+}
+
+.login-page_card_img-container_bg {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.login-page_card_img-container_logo {
+    position: absolute;
+    width: 20vw;
+    bottom: 1.5rem;
+    right: .5rem;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.enter-animation {
+    animation: slide-fade 1s;
+}
+
+.login-page_card_form {
+    @include mat.form-field-overrides((filled-container-color: var(--mat-sys-surface-container-high),
+            filled-active-indicator-height: 0px,
+            filled-focus-active-indicator-height: 0px,
+        ));
+}
+
+.login-page_card_form h1 {
+    font-size: 2em;
+}
+
+.login-page_card_form_span {
+    margin-bottom: 5em;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.login-page_card_form mat-checkbox{
+    width: 50%;
+}
+
+.login-page_card_form_login-btn{
+    width: 49%;
+    border-radius: 12px;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 16px;
+    padding: 1.5em;
+}
+
+.link_create_acc{
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--mat-sys-on-surface);
+}

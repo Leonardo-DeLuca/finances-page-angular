@@ -1,0 +1,48 @@
+<section class="register-page">
+    <mat-card class="register-page_card">
+        <div class="register-page_card_form">
+            <button mat-icon-button class="home-btn" routerLink="/home">
+                <mat-icon>close</mat-icon>
+            </button>
+
+
+            <h1>Sign up</h1>
+            <span class="register-page_card_form_span">Enter your informations below</span>
+
+
+            <div class="register-page_card_form_name">
+                <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput [formControl]="firstName">
+                    @if (firstName.invalid && firstName.touched) {
+                    <mat-error>{{ blankError }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Last name</mat-label>
+                    <input matInput [formControl]="lastName">
+                    @if (lastName.invalid && lastName.touched) {
+                    <mat-error>{{ blankError }}</mat-error>
+                    }
+                </mat-form-field>
+
+            </div>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="email" placeholder="email@example.com">
+                @if (email.invalid && email.touched){
+                    <mat-error>{{emailError}}</mat-error>
+                }
+            </mat-form-field>
+            <button matButton="filled" class="register-page_card_form_register-btn" matButton="filled">Sign up</button>
+
+        </div>
+
+        <div class="register-page_card_img-container">
+            <img class="register-page_card_img-container_bg" src="bg_login.jpg" alt="background">
+            <img class="register-page_card_img-container_logo" src="logo_branco.png" alt="logo">
+        </div>
+    </mat-card>
+</section>

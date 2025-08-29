@@ -1,0 +1,14 @@
+.tab-menu{
+    border-radius: 500px;
+    border: 1px solid var(--mat-sys-outline-variant);
+    padding: .3rem;
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    margin-left: -7rem;
+}
+
+.tab-menu button{
+    color: var(--mat-sys-on-surface-variant);
+    font-weight: 500;
+}

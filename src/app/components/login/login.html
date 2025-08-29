@@ -1,0 +1,45 @@
+<section class="login-page">
+    <mat-card class="login-page_card">
+        <div class="login-page_card_form">
+            <button mat-icon-button class="home-btn" routerLink="/home">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <h1>Login</h1>
+            <span class="login-page_card_form_span">Enter your credentials to get in</span>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="email@example.com" [formControl]="email">
+                @if (email.invalid && email.touched) {
+                <mat-error>{{ emailError }}</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" [formControl]="password">
+
+                <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility($event)">
+                    <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+
+                @if (password.invalid && password.touched) {
+                <mat-error>{{ passwordError }}</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-checkbox>Remember me</mat-checkbox>
+
+            <button class="login-page_card_form_login-btn" matButton="filled">Login</button>
+
+            <span>Not a member?<a class="link_create_acc" routerLink="/register"> Create an account</a></span>
+
+        </div>
+
+        <div class="login-page_card_img-container">
+            <img class="login-page_card_img-container_bg" src="bg_login.jpg" alt="background">
+            <img class="login-page_card_img-container_logo" src="logo_branco.png" alt="logo">
+        </div>
+    </mat-card>
+</section>
