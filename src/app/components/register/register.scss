@@ -38,6 +38,14 @@
     top: 1em;
 }
 
+.password-form{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: .6em;
+}
+
 .register-page_card_img-container {
     width: 50%;
     position: relative;
