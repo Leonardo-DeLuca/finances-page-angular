@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav">
+    <mat-sidenav mode="side" opened class="leftnav">
+        <img class="leftnav-logo" src={{logo}} alt="logo">
+
+        <mat-list>
+            <div mat-subheader class="subheader">MAIN MENU</div>
+            @for (item of sidenavitems; track item.title) {
+                @if (!item.preferences) {
+                    <mat-list-item [routerLink]="['/app', item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                        <div matListItemTitle class="item-title">{{item.title}}</div>
+                    </mat-list-item>
+                }
+            }
+            <div mat-subheader class="subheader">PREFERENCES</div>
+            @for (item of sidenavitems; track item.title) {
+                @if (item.preferences) {
+                    <mat-list-item [routerLink]="['/app', item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                        <div matListItemTitle class="item-title">{{item.title}}</div>
+                    </mat-list-item>
+                }
+            }
+        </mat-list>
+
+        <div class="user">
+            <img class="user-img" src="Leonardo.png" alt="user image">
+            <span class="user-name">Nome usuário</span>
+            <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item class="logout-btn" routerLink="/home">
+                    <mat-icon matListItemIcon style="color: #E53935;">logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="darkmode">
+            <span>Dark mode</span>
+            <mat-slide-toggle [checked]="isDark()"
+            (change)="toggleDarkMode()"></mat-slide-toggle>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

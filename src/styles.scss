@@ -1,10 +1,31 @@
 @use '@angular/material' as mat;
 
+// Tema claro
 html {
   @include mat.theme((
     color: (
       primary: mat.$cyan-palette,
       tertiary: mat.$orange-palette,
+      theme-type: light,
+    ),
+    typography: (
+      plain-family: Roboto,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 600,
+      regular-weight: 400,
+    ),
+    density: 0,
+  ));
+}
+
+// Tema escuro
+html.dark-theme {
+  @include mat.theme((
+    color: (
+      primary: mat.$cyan-palette,
+      tertiary: mat.$orange-palette,
+      theme-type: dark,
     ),
     typography: (
       plain-family: Roboto,
@@ -27,7 +48,12 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
-/* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//adicionado aqui para evitar ng:deep - transforma o sidenav left em flex para ajuste de gap;
+.mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+}
