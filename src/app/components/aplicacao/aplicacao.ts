@@ -2,11 +2,11 @@ import { Component, effect, inject, signal, ViewEncapsulation } from '@angular/c
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidenavService } from '../../services/sidenav-service';
-import { SidenavitemsInterface } from '../../interfaces/sidenavitems-interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
+import { SidenavitemsInterface } from '../../interfaces/sidenavitems-interface';
 
 
 @Component({
