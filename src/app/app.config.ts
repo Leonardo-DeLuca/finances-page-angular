@@ -8,20 +8,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes, withViewTransitions({
-      onViewTransitionCreated: ({ transition }) => {
-        const router = inject(Router);
-        const nav = router.currentNavigation();
-
-        const from = nav?.previousNavigation?.finalUrl?.toString();
-        const to = nav?.finalUrl?.toString();
-
-        // 👇 só cancela se for exatamente de /register → /login
-        if (from === '/register' && to === '/login') {
-          transition.skipTransition();
-        }
-      }
-    })),
+    provideRouter(routes, withViewTransitions()),
     provideHttpClient()
   ]
 };

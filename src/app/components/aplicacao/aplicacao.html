@@ -22,13 +22,13 @@
                 }
             }
         </mat-list>
-
+        @let user = auth.user();
         <div class="user">
             <img class="user-img" src="Leonardo.png" alt="user image">
-            <span class="user-name">Nome usuário</span>
+            <span class="user-name">{{user?.firstName}} {{user?.lastName}}</span>
             <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item class="logout-btn" routerLink="/home">
+                <button mat-menu-item class="logout-btn" (click)="logout()">
                     <mat-icon matListItemIcon style="color: #E53935;">logout</mat-icon>
                     <span>Logout</span>
                 </button>

@@ -6,7 +6,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +25,15 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./login.scss']
 })
 export class Login {
+  constructor(private authService: AuthService, private router: Router){
+  }
+  
   readonly email = new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] });
   readonly password = new FormControl('', { nonNullable: true, validators: [Validators.required] });
 
   hide = signal(true);
+  loading= signal(false);
+  errorMsg = signal('');
 
   get emailError(): string {
     if (this.email.hasError('required')) return 'You must enter a value';
@@ -42,5 +48,25 @@ export class Login {
   togglePasswordVisibility(event: MouseEvent) {
     event.preventDefault();
     this.hide.set(!this.hide());
+  }
+
+  onSubmit(): void{
+    if (this.email.invalid || this.password.invalid) {
+      this.email.markAsTouched();
+      this.password.markAsTouched();
+      return;
+    }
+
+    this.loading.set(true);
+      this.authService.login(this.email.value, this.password.value).subscribe({
+        next: () => {
+          this.loading.set(false);
+          this.router.navigate(['/app'])
+        },
+        error: (err) => {
+          this.loading.set(false);
+          this.errorMsg.set(err.error?.message || 'Login failed');
+        }
+      });
   }
 }

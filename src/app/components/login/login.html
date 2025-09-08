@@ -31,9 +31,16 @@
 
             <mat-checkbox>Remember me</mat-checkbox>
 
-            <button class="login-page_card_form_login-btn" matButton="filled">Login</button>
+            <button class="login-page_card_form_login-btn"
+            matButton="filled"
+            (click)="onSubmit()"
+            [disabled]="loading()">@if (loading()) { Loading... } @else { Login }</button>
 
             <span>Not a member?<a class="link_create_acc" routerLink="/register"> Create an account</a></span>
+
+            @if (errorMsg()) {
+                <mat-error>{{ errorMsg() }}</mat-error>
+              }
 
         </div>
 

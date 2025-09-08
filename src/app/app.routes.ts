@@ -3,12 +3,14 @@ import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { Aplicacao } from './components/aplicacao/aplicacao';
+import { authGuard } from './guards/auth-guard';
+import { LoginGuard } from './guards/login-guard';
 
 export const routes: Routes = [
     {path: '', component: Home},
-    {path: 'login', component: Login},
+    {path: 'login', component: Login, canActivate: [LoginGuard]},
     {path: 'register', component: Register},
-    {path: 'app', component: Aplicacao, children: [
+    {path: 'app', component: Aplicacao, canActivate: [authGuard],children: [
         {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
         {path: 'dashboard', loadComponent: () => import('./components/aplicacao/dashboard/dashboard').then(m => m.Dashboard)},
         {path: 'invoices', loadComponent: () => import('./components/aplicacao/invoices/invoices').then(m => m.Invoices)},

@@ -96,7 +96,6 @@ export class Register {
             this.signUpForm.get('email')?.setErrors({ emailTaken: true })
           }
 
-          console.error('Erro ao criar usuário', err);
           this._snackBar.open(`Registration error. ${err.error?.message}`, 'Ok',{
             horizontalPosition: 'center',
             verticalPosition: 'top',
