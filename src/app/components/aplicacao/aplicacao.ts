@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Aplicacao {
   sidenavserv: SidenavService = inject(SidenavService);
-  logo: string = 'logo.png';
+  logo: string = 'logo.webp';
   auth = inject(AuthService);
 
   sidenavitems: SidenavitemsInterface[] = [];
@@ -33,7 +33,7 @@ export class Aplicacao {
     if (saved === 'true') {
       this.isDark.set(true);
       document.documentElement.classList.add('dark-theme');
-      this.logo = "logo_branco.png"
+      this.logo = "logo_branco.webp"
     }
 
     // Sempre salva quando muda
@@ -52,10 +52,10 @@ export class Aplicacao {
 
     if (this.isDark()) {
       document.documentElement.classList.add('dark-theme');
-      this.logo = "logo_branco.png";
+      this.logo = "logo_branco.webp";
     } else {
       document.documentElement.classList.remove('dark-theme');
-      this.logo = "logo.png";
+      this.logo = "logo.webp";
     }
   }
 
