@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,8 +25,8 @@ import { AuthService } from '../../services/auth-service';
   styleUrls: ['./login.scss']
 })
 export class Login {
-  constructor(private authService: AuthService, private router: Router){
-  }
+  private authService = inject(AuthService);
+  private router = inject(Router);
   
   readonly email = new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] });
   readonly password = new FormControl('', { nonNullable: true, validators: [Validators.required] });

@@ -21,12 +21,13 @@ export class Aplicacao {
   sidenavserv: SidenavService = inject(SidenavService);
   logo: string = 'logo.webp';
   auth = inject(AuthService);
+  private router = inject(Router);
 
   sidenavitems: SidenavitemsInterface[] = [];
   
   isDark = signal(false);
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService) {
     this.sidenavitems = this.sidenavserv.getAll();
     // Carrega preferência do usuário
     const saved = localStorage.getItem('dark-mode');
